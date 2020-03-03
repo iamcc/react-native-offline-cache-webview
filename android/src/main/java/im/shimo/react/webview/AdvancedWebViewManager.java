@@ -693,6 +693,10 @@ public class AdvancedWebViewManager extends ReactWebViewManager {
         // WebViewCache Code
         @Override
         public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+            if (request.getUrl().toString().contains("tngdigital.com.my")) {
+                return super.shouldInterceptRequest(view, request);
+            }
+            
             return WebViewCacheInterceptorInst.getInstance().interceptRequest(request);
         }
 
